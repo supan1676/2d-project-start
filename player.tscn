@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://cnic4074ibi6j"]
+
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_0dic1"]
+[ext_resource type="Script" uid="uid://b3gi4f88nv6pu" path="res://SmartSoldier.gd" id="1_1n6e1"]
+[ext_resource type="PackedScene" uid="uid://b7ev7o2q8leky" path="res://gun.tscn" id="3_hqtel"]
+[ext_resource type="Script" uid="uid://cuntt5mm1i5ki" path="res://RL_Controller.gd" id="3_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jttb3"]
+radius = 39.3192
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nl5st"]
+radius = 44.2832
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le3jc"]
+bg_color = Color(0.332881, 0.332881, 0.332881, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxunb"]
+bg_color = Color(0.821737, 0.0567174, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="player" type="CharacterBody2D" unique_id=1058811275]
+z_index = 1
+collision_mask = 3
+platform_floor_layers = 4294901760
+script = ExtResource("1_1n6e1")
+
+[node name="HappyBoo" parent="." unique_id=246654221 instance=ExtResource("1_0dic1")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=620509261]
+shape = SubResource("CircleShape2D_jttb3")
+
+[node name="gun" parent="." unique_id=937830511 instance=ExtResource("3_hqtel")]
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=1143863064]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1443702245]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_nl5st")
+debug_color = Color(0.728179, 0.454136, 0.381844, 0.42)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1886266428]
+unique_name_in_owner = true
+offset_left = -118.0
+offset_top = -141.0
+offset_right = 121.0
+offset_bottom = -118.0
+theme_override_styles/background = SubResource("StyleBoxFlat_le3jc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bxunb")
+value = 100.0
+
+[node name="Sensors" type="Node2D" parent="." unique_id=961988677]
+
+[node name="RayCast2D" type="RayCast2D" parent="Sensors" unique_id=2123639605]
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D2" type="RayCast2D" parent="Sensors" unique_id=164104778]
+rotation = 0.7853982
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D3" type="RayCast2D" parent="Sensors" unique_id=643075087]
+rotation = 1.5707964
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D4" type="RayCast2D" parent="Sensors" unique_id=1503154409]
+rotation = 2.3561945
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D5" type="RayCast2D" parent="Sensors" unique_id=174376900]
+rotation = 3.1415927
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D6" type="RayCast2D" parent="Sensors" unique_id=1373463227]
+rotation = -2.3561945
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D7" type="RayCast2D" parent="Sensors" unique_id=1577916359]
+rotation = -1.5707964
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="RayCast2D8" type="RayCast2D" parent="Sensors" unique_id=1736875351]
+rotation = -0.7853982
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="AIController2D" type="Node2D" parent="." unique_id=693178370]
+script = ExtResource("3_i3pqv")
+metadata/_custom_type_script = "uid://bh8m642f256g4"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=14231]
+path_desired_distance = 50.0
+target_desired_distance = 50.0
+avoidance_enabled = true
+radius = 40.0
+max_speed = 400.0

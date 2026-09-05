@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://df06lreq0y347"]
+
+[ext_resource type="PackedScene" uid="uid://cnic4074ibi6j" path="res://player.tscn" id="1_48jac"]
+[ext_resource type="Script" path="res://sur_game.gd" id="1_shhly"]
+[ext_resource type="PackedScene" uid="uid://nyqluw3iwb4a" path="res://pine_.tscn" id="2_40igk"]
+[ext_resource type="Script" uid="uid://cc83l686y4biu" path="res://addons/godot_rl_agents/sync.gd" id="4_qw5v5"]
+[ext_resource type="PackedScene" uid="uid://cu0ifjy7h06kt" path="res://Tilesets/base.tscn" id="5_dlqae"]
+
+[sub_resource type="Curve2D" id="Curve2D_dlqae"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -629, -640, 0, 0, 0, 0, 4562, -594, 0, 0, 0, 0, 4623, 4197, 0, 0, 0, 0, -613, 4182, 0, 0, 0, 0, -629, -640)
+}
+point_count = 5
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dlqae"]
+vertices = PackedVector2Array(-500, -500, 4500, -500, 4500, 4500, -500, 4500)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-500, -500, 4500, -500, 4500, 4500, -500, 4500)])
+
+[node name="game" type="Node2D" unique_id=485964843]
+y_sort_enabled = true
+script = ExtResource("1_shhly")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1891966400]
+layer = -40
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1118638061]
+offset_left = -56.0
+offset_top = -82.0
+offset_right = 4040.0
+offset_bottom = 4014.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" parent="." unique_id=915266747 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(1922, 1542)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D4" parent="." unique_id=15655735 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(2644, 1661)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D5" parent="." unique_id=1662571285 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(1366, 2323)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D6" parent="." unique_id=37566070 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(1058, 3201)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D7" parent="." unique_id=213880769 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(291, 2481)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D8" parent="." unique_id=1410865104 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(3064, 2262)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D9" parent="." unique_id=547901923 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(3114, 3562)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D10" parent="." unique_id=82357501 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(2987, 364)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D11" parent="." unique_id=1568376731 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(3250, 1163)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D12" parent="." unique_id=777141422 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(2163, 2849)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D13" parent="." unique_id=28428354 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(700, 1405)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D2" parent="." unique_id=521762685 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(1857, 475)
+scale = Vector2(1.7, 1.7)
+
+[node name="StaticBody2D" parent="." unique_id=1042629939 groups=["obstacles"] instance=ExtResource("2_40igk")]
+position = Vector2(1297, 1113)
+scale = Vector2(1.7, 1.7)
+
+[node name="Timer" type="Timer" parent="." unique_id=1643365138]
+wait_time = 0.2
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="." unique_id=1558500796]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver" unique_id=256841125]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.592157)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect" unique_id=1836755775]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -712.0
+offset_top = -171.0
+offset_right = 863.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 250
+text = "GAME OVER !"
+
+[node name="Sync" type="Node" parent="." unique_id=1495746457]
+script = ExtResource("4_qw5v5")
+speed_up = 10.0
+metadata/_custom_type_script = "uid://cc83l686y4biu"
+
+[node name="LargeHouse" parent="." unique_id=1235834108 instance=ExtResource("5_dlqae")]
+position = Vector2(14, 35)
+scale = Vector2(7, 7)
+z_index = 0
+
+[node name="Agents" type="Node2D" parent="." unique_id=1341975756]
+y_sort_enabled = true
+z_index = 2
+
+[node name="player" parent="Agents" unique_id=1058811275 instance=ExtResource("1_48jac")]
+position = Vector2(2072, 2167)
+scale = Vector2(1.6, 1.6)
+z_index = 2
+
+[node name="player2" parent="Agents" unique_id=2116078332 instance=ExtResource("1_48jac")]
+position = Vector2(641, 3528)
+scale = Vector2(1.6, 1.6)
+z_index = 2
+
+[node name="player3" parent="Agents" unique_id=1997095894 instance=ExtResource("1_48jac")]
+position = Vector2(2843, 832)
+scale = Vector2(1.6, 1.6)
+z_index = 2
+
+[node name="player4" parent="Agents" unique_id=1527736445 instance=ExtResource("1_48jac")]
+position = Vector2(875, 1118)
+scale = Vector2(1.6, 1.6)
+z_index = 2
+
+[node name="player5" parent="Agents" unique_id=1545882171 instance=ExtResource("1_48jac")]
+position = Vector2(501, 1132)
+scale = Vector2(1.6, 1.6)
+z_index = 2
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=20240221]
+navigation_polygon = SubResource("NavigationPolygon_dlqae")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=774348519]
+position = Vector2(2031, 1915)
+zoom = Vector2(0.27, 0.148)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1492615692]
+curve = SubResource("Curve2D_dlqae")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1654326038]
+unique_name_in_owner = true
+position = Vector2(-629, -640)
+rotation = 0.008861259
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
